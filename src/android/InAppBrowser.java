@@ -885,6 +885,9 @@ public class InAppBrowser extends CordovaPlugin {
                 settings.setJavaScriptCanOpenWindowsAutomatically(true);
                 settings.setBuiltInZoomControls(showZoomControls);
                 settings.setPluginState(android.webkit.WebSettings.PluginState.ON);
+				
+				//TODO: Allow this setting to be controlled from config.xml
+				settings.setAllowUniversalAccessFromFileURLs(true);
 
                 if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) {
                     settings.setMediaPlaybackRequiresUserGesture(mediaPlaybackRequiresUserGesture);
@@ -947,7 +950,7 @@ public class InAppBrowser extends CordovaPlugin {
                 webViewLayout.addView(inAppWebView);
                 main.addView(webViewLayout);
 
-                // Don't add the footer unless it's been enabled
+                // Don't add the footer unless it'ssetAllowUniversalAccessFromFileURLs been enabled
                 if (showFooter) {
                     webViewLayout.addView(footer);
                 }
